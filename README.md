@@ -1,6 +1,6 @@
 # 🌽 Maize & Weed Detection for an Autonomous Weeding Robot
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR-STREAMLIT-LINK)
+[![Open in Streamlit](https://maize-weed-detector-lcx64etcepujvmxuefcbnp.streamlit.app/)](YOUR-STREAMLIT-LINK)
 
 **Live demo:** YOUR-STREAMLIT-LINK
 
