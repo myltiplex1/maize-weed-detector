@@ -1,15 +1,16 @@
 # 🌽 Maize & Weed Detection for an Autonomous Weeding Robot
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR-STREAMLIT-LINK)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://maize-weed-detector-lcx64etcepujvmxuefcbnp.streamlit.app/)
 
-**Live demo:** YOUR-STREAMLIT-LINK
+**Live demo:** https://maize-weed-detector-lcx64etcepujvmxuefcbnp.streamlit.app/
+
 
 A small robot car with a **Raspberry Pi 4** and a **Pi Camera** drives along maize rows, recognises
 **maize** and **weeds** with a YOLO object detector, protects every maize plant, and fires a
 (laser - LED stand-in for now) at weeds. This repository contains the full machine-learning pipeline:
 dataset building, training and evaluation (Google Colab), the on-robot software, and a web dashboard.
 
-<p align="center"><img src="results/pi_benchmark/figC3_pi4_speed_accuracy.png" width="85%"></p>
+<p align="center"><img src="results/figC3_pi4_speed_accuracy.png" width="85%"></p>
 
 ## Highlights
 | | |
