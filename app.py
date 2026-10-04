@@ -27,7 +27,18 @@ UI = {'maize': '#00a854', 'weed': '#d63aff', 'ink': '#18261c', 'muted': '#5d6b61
 
 st.set_page_config(page_title='Maize & Weed Detector', page_icon='🌽', layout='wide', initial_sidebar_state='auto')
 
-# ------------------------------------------------------------------ styling
+# ------------------------------------------------------------------ styling (follows light / dark theme)
+try:
+    DARK = st.context.theme.type == 'dark'
+except Exception:
+    DARK = False
+C = dict(card='#17221b', border='#2a3a2f', ink='#e4ede6', muted='#9fb0a4', shadow='rgba(0,0,0,.35)',
+         go_bg='#3a1747', go_bd='#6d2a85', go_tx='#f3c8ff', ok_bg='#12341f', ok_bd='#2a6b40', ok_tx='#bff0cf',
+         no_bg='#1c2620', no_bd='#2e3b33', no_tx='#b9c6bd') if DARK else \
+    dict(card='#ffffff', border='#e3e8e1', ink='#18261c', muted='#5d6b61', shadow='rgba(0,0,0,.04)',
+         go_bg='#fbeaff', go_bd='#efc2fb', go_tx='#6d1688', ok_bg='#e7f6ec', ok_bd='#bfe5cb', ok_tx='#135c2d',
+         no_bg='#f2f4f1', no_bd='#e0e5de', no_tx='#46524a')
+UI['ink'], UI['muted'] = C['ink'], C['muted']
 st.markdown(f"""
 <style>
   .block-container {{ padding-top: 3.2rem; padding-bottom: 2rem; max-width: 1280px; }}
@@ -35,23 +46,23 @@ st.markdown(f"""
           border-radius: 18px; padding: 22px 28px; color: #fff; margin-bottom: 18px;
           box-shadow: 0 6px 24px rgba(15,61,34,.18); }}
   .hero h1 {{ font-size: 1.9rem; margin: 0 0 4px 0; color: #fff; letter-spacing: -.3px; }}
-  .hero p {{ margin: 0; opacity: .88; font-size: 1.0rem; }}
+  .hero p {{ margin: 0; opacity: .88; font-size: 1.0rem; color: #fff; }}
   .chip {{ display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.14);
           border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 3px 11px;
           font-size: .82rem; margin: 10px 6px 0 0; color: #fff; }}
   .dot {{ width: 10px; height: 10px; border-radius: 3px; display: inline-block; }}
-  .card {{ background: #fff; border: 1px solid #e3e8e1; border-radius: 14px; padding: 14px 16px;
-          box-shadow: 0 1px 3px rgba(0,0,0,.04); min-height: 104px; margin-bottom: 10px; }}
-  .card .lbl {{ font-size: .78rem; text-transform: uppercase; letter-spacing: .6px; color: {UI['muted']}; }}
-  .card .val {{ font-size: 1.9rem; font-weight: 700; color: {UI['ink']}; line-height: 1.15; }}
-  .card .sub {{ font-size: .8rem; color: {UI['muted']}; }}
+  .card {{ background: {C['card']}; border: 1px solid {C['border']}; border-radius: 14px; padding: 14px 16px;
+          box-shadow: 0 1px 3px {C['shadow']}; min-height: 104px; margin-bottom: 10px; }}
+  .card .lbl {{ font-size: .78rem; text-transform: uppercase; letter-spacing: .6px; color: {C['muted']}; }}
+  .card .val {{ font-size: 1.9rem; font-weight: 700; color: {C['ink']}; line-height: 1.15; }}
+  .card .sub {{ font-size: .8rem; color: {C['muted']}; }}
   .decision {{ border-radius: 12px; padding: 12px 16px; margin: 12px 0 6px 0; font-weight: 600; }}
-  .decision.go {{ background: #fbeaff; border: 1px solid #efc2fb; color: #6d1688; }}
-  .decision.ok {{ background: #e7f6ec; border: 1px solid #bfe5cb; color: #135c2d; }}
-  .decision.none {{ background: #f2f4f1; border: 1px solid #e0e5de; color: #46524a; }}
-  .section-title {{ font-weight: 700; font-size: 1.05rem; color: {UI['ink']}; margin: 4px 0 8px 0; }}
+  .decision.go {{ background: {C['go_bg']}; border: 1px solid {C['go_bd']}; color: {C['go_tx']}; }}
+  .decision.ok {{ background: {C['ok_bg']}; border: 1px solid {C['ok_bd']}; color: {C['ok_tx']}; }}
+  .decision.none {{ background: {C['no_bg']}; border: 1px solid {C['no_bd']}; color: {C['no_tx']}; }}
+  .section-title {{ font-weight: 700; font-size: 1.05rem; color: {C['ink']}; margin: 4px 0 8px 0; }}
   div[data-testid="stTabs"] button p {{ font-size: 1.0rem; font-weight: 600; }}
-  .foot {{ color: {UI['muted']}; font-size: .8rem; margin-top: 26px; text-align: center; }}
+  .foot {{ color: {C['muted']}; font-size: .8rem; margin-top: 26px; text-align: center; }}
 </style>
 """, unsafe_allow_html=True)
 
