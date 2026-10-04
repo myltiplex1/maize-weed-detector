@@ -1,0 +1,11 @@
+{
+ "imgsz": 416,
+ "classes": [
+  "maize",
+  "weed"
+ ],
+ "maize_conf": 0.278,
+ "weed_conf": 0.25,
+ "model": "yolo26n.pt",
+ "run": "yolo26n_v1"
+}

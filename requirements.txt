@@ -1,0 +1,11 @@
+streamlit>=1.48
+ncnn>=1.0.20240410
+opencv-python-headless>=4.8
+numpy>=1.24
+pillow>=10.0
+pyyaml>=6.0
+pandas>=2.0
+imageio>=2.31
+imageio-ffmpeg>=0.4.9
+streamlit-webrtc>=0.60
+av>=12.0
