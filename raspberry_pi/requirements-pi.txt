@@ -1,0 +1,7 @@
+# Raspberry Pi 4 (64-bit Raspberry Pi OS, Python 3.13). Create the venv WITH system packages so
+# picamera2, gpiozero and lgpio (installed by Raspberry Pi OS) are visible:
+#   python3 -m venv --system-site-packages venv && source venv/bin/activate
+# Tip: install CPU-only PyTorch first to avoid ~3.5 GB of unused CUDA packages:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+ultralytics>=8.4
+ncnn

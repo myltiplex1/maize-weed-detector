@@ -1,0 +1,88 @@
+{
+  "$help": [
+    "Motor test configuration for the Raspberry Pi 4 ('nike') L298N 4-wheel chassis.",
+    "Load with:  /usr/bin/python3 src/test_motors.py --config src/motor_config.json -m dance",
+    "Anything here can also be overridden per run with CLI flags (run --help).",
+    "Generate a fresh copy of the effective config with --print-config / --write-config.",
+    "",
+    "PIN MAP — verified free with `gpioinfo` + /sys/kernel/debug/pinctrl on this board:",
+    "  left  en=12 (pin 32)  in1=17 (pin 11)  in2=27 (pin 13)   -> L298N ENA / IN1 / IN2",
+    "  right en=13 (pin 33)  in3=22 (pin 15)  in4=23 (pin 16)   -> L298N ENB / IN3 / IN4",
+    "",
+    "REFUSED by the script (reserved by configuration, not by a live claim):",
+    "  GPIO0/1   = HAT ID EEPROM i2c",
+    "  GPIO14/15 = serial console. serial0 resolves to the mini-UART ttyS0 on these pins",
+    "              (console=ttyS0,115200), and its pin mux is set by the firmware, so no",
+    "              runtime check can see the conflict.",
+    "",
+    "WARNED about: GPIO2/3 (I2C1), GPIO4 (GPCLK0/1-Wire), GPIO7-11 (SPI0), GPIO18-21 (PCM/I2S).",
+    "",
+    "DO NOT CONFUSE THE CHIPS. gpiochip0 (pinctrl-bcm2711) is the 40-pin header. gpiochip1",
+    "(raspberrypi-exp-gpio) is the firmware expander, whose lines 5/6 are CAM_GPIO (camera",
+    "rail) and SD_PWR_ON (microSD power). Header GPIO5/GPIO6 are ordinary free pins; the",
+    "expander's are load-bearing. The script picks the SoC chip automatically — do not set",
+    "\"chip\" to 1."
+  ],
+
+  "chip": null,
+
+  "pins": {
+    "left": {
+      "en": 12,
+      "in1": 17,
+      "in2": 27,
+      "invert": false
+    },
+    "right": {
+      "en": 13,
+      "in3": 22,
+      "in4": 23,
+      "invert": false
+    }
+  },
+
+  "geometry": {
+    "motors_per_channel": 2,
+    "wheel_track_m": 0.15,
+    "turn_ms_90": 700.0,
+    "turn_speed": 65.0
+  },
+
+  "limits": {
+    "max_duty": 90.0,
+    "min_duty": 22.0,
+    "deadband": 0.12,
+    "accel": 180.0,
+    "decel": 320.0,
+    "reversal_max_duty": 8.0
+  },
+
+  "trim": {
+    "left": 1.0,
+    "right": 1.0
+  },
+
+  "control": {
+    "rate_hz": 50.0,
+    "pwm_freq": 1000.0,
+    "idle_mode": "coast",
+    "log_hz": 20.0
+  },
+
+  "safety": {
+    "max_runtime_s": 240.0,
+    "settle_timeout_s": 3.0
+  },
+
+  "motion": {
+    "speed": 60.0,
+    "duration_s": 3.0,
+    "turn_rate": 35.0,
+    "pulse_ms": 400.0,
+    "pause_s": 0.7
+  },
+
+  "logging": {
+    "csv": null
+  }
+}
