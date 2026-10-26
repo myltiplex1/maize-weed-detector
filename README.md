@@ -8,7 +8,7 @@
 A small robot car with a **Raspberry Pi 4** and a **Pi Camera** drives along maize rows, recognises
 **maize** and **weeds** with a YOLO object detector, protects every maize plant, and fires a
 (laser - LED stand-in for now) at weeds. This repository contains the full machine-learning pipeline:
-dataset building, training and evaluation (Google Colab), the on-robot software, and a web dashboard.
+dataset building, training and evaluation, the on-robot software, and a web dashboard.
 
 <p align="center"><img src="results/figC3_pi4_speed_accuracy.png" width="85%"></p>
 
@@ -82,7 +82,3 @@ More figures and tables: [`results/`](results/).
 
 Models are trained with [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) (AGPL-3.0).
 Because of the CropAndWeed licence, the trained models are for research/education use.
-
-## Team
-- Machine learning & vision: *your name*
-- Robot hardware & motor control: *teammate's name*
